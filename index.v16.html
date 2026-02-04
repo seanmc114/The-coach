@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>LOOPS</title>
+  <link rel="stylesheet" href="./style.css?v=16" />
+</head>
+
+<body>
+  <main class="wrap">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logoRing" aria-hidden="true">
+          <img src="./crest.png" alt="" />
+        </div>
+        <div class="brandText">
+          <h1 id="title">LOOPS</h1>
+          <p class="sub" id="subtitle">Digital Clockwork Practice • Junior Cycle Languages • Build KO-v4</p>
+          <p class="motto" id="motto">Practice. Fix. Level up — one cog at a time.</p>
+        </div>
+      </div>
+
+      <div class="pillRow" aria-label="Round settings">
+        <span class="pill" id="pillLevel">Level: Basics</span>
+        <span class="pill" id="pillMode">Mode: Classic</span>
+        <span class="pill" id="pillLang">Language: Spanish</span>
+        <span class="pill" id="pillPenalty">Penalty: +30s</span>
+      </div>
+    </header>
+
+    <!-- HOME -->
+    <section class="card" id="screenHome">
+      <div class="cardHead">
+        <h2>Choose a theme</h2>
+        <p class="muted">
+          Pick a theme tile. Each theme has 10 levels (locked until you pass). You can always switch theme to train elsewhere.
+        </p>
+      </div>
+
+      <div class="grid">
+        <div class="field">
+          <label for="modeSelect">Mode</label>
+          <select id="modeSelect">
+            <option value="classic">Classic</option>
+            <option value="sprint">Sprint (time cap)</option>
+            <option value="survival">Survival (0 wrong)</option>
+            <option value="relay">Relay (A then B)</option>
+          </select>
+          <p class="hint" id="modeHintHome">—</p>
+        </div>
+
+        <div class="field">
+          <label for="langSelect">Answer language</label>
+          <select id="langSelect">
+            <option value="es">Spanish</option>
+            <option value="fr">French</option>
+            <option value="de">German</option>
+          </select>
+          <p class="hint" id="langHint">—</p>
+        </div>
+
+<div class="field">
+  <label for="playerName">Your name (for coach)</label>
+  <input id="playerName" type="text" maxlength="18" placeholder="e.g. Sean" />
+  <p class="hint" id="nameHint">Saved on this device.</p>
+</div>
+      </div>
+
+      <div class="hr"></div>
+
+      <div class="themeGrid" id="themeGrid" aria-label="Themes">
+        <!-- injected -->
+      </div>
+
+      <div class="hr"></div>
+
+      <div class="motivation">
+        <div class="motBox">
+          <div class="motK">Personal best (this setup)</div>
+          <div class="motV" id="pbOut">—</div>
+        </div>
+        <div class="motBox">
+          <div class="motK">Rounds played</div>
+          <div class="motV" id="roundsOut">0</div>
+        </div>
+      </div>
+
+      <div class="globalProg" aria-label="Overall progress">
+        <div class="globalTop">
+          <div class="globalK">Overall progress (stars earned)</div>
+          <div class="globalV" id="globalText">0 / 100</div>
+        </div>
+        <div class="globalBar"><div class="globalFill" id="globalFill"></div></div>
+      </div>
+
+      <p class="hint">Tip: If you get stuck, jump to a different theme and come back stronger.</p>
+</section>
+
+
+    <section class="screen hidden" id="screenTheme">
+      <div class="cardHead">
+        <h2 id="themeTitle">Theme</h2>
+        <p class="muted" id="themeSub">Pick a level. Level 1 is always open. Others unlock when you pass.</p>
+      </div>
+
+      <div class="themeMeta">
+        <div class="starsRow" id="themeStars"></div>
+        <div class="themeBar"><div class="themeFill" id="themeFill"></div></div>
+        <div class="muted small" id="themeBest">Best: —</div>
+      </div>
+
+      <div class="levelGrid" id="themeLevels" aria-label="Theme levels">
+        <!-- injected -->
+      </div>
+
+      <div class="ctaRow">
+        <button class="btn ghost" id="themeBackBtn" type="button">← Back</button>
+      </div>
+    </section>
+
+
+    <!-- GAME -->
+    <section class="card hidden" id="screenGame">
+      <div class="gameHead">
+        <div>
+          <h2 id="gameTitle">Round</h2>
+          <div class="meta">
+            <span class="tag" id="tagCap">Sprint cap: —</span>
+            <span class="tag" id="tagTips">Tips: —</span>
+          </div>
+        </div>
+
+        <div class="rightControls">
+          <button class="btn ghost tiny" id="quitBtn" type="button">Quit</button>
+        </div>
+      </div>
+
+      <!-- Per-round progress -->
+      <div class="progressWrap" aria-label="Progress">
+        <div class="progressBar"><div class="progressFill" id="progressFill"></div></div>
+        <div class="progressText" id="progressText">1 / 10</div>
+      </div>
+
+      <div class="promptArea" id="promptArea">
+        <!-- injected -->
+      </div>
+
+      <div class="controls">
+        <button class="btn" id="prevBtn" type="button">Back</button>
+        <button class="btn primary" id="nextBtn" type="button">Next</button>
+      </div>
+
+      <div class="modeHint" id="modeHint">—</div>
+    </section>
+
+    <!-- RESULTS -->
+    <section class="card hidden" id="screenResults">
+      <div class="cardHead">
+        <h2>Results</h2>
+        <p class="muted" id="aiStatusText">Marked by coach — review your upgrades below.</p>
+      </div>
+
+      <div class="statsRow">
+        <div class="stat">
+          <div class="k">Time</div>
+          <div class="v" id="timeOut">0:00</div>
+        </div>
+        <div class="stat">
+          <div class="k">Wrong</div>
+          <div class="v" id="wrongOut">0</div>
+        </div>
+        <div class="stat">
+          <div class="k">Turbo score</div>
+          <div class="v" id="scoreOut">0.0s</div>
+        </div>
+        <div class="stat">
+          <div class="k">Points</div>
+          <div class="v" id="pointsOut">0</div>
+        </div>
+
+        <div class="stat">
+          <div class="k">Target</div>
+          <div class="v" id="targetOut">—</div>
+        </div>
+      </div>
+
+      <div class="coachFocus" id="coachFocus"></div>
+      <div class="coachVerdict" id="coachVerdict"></div>
+      <div class="miniRow"><button class="btn primary tiny" id="toggleFeedbackBtn" type="button">Show Corrections</button><span class="muted miniHint">Tap to see model answers + checklist.</span></div>
+
+      <div class="feedbackList" id="feedbackList" aria-label="Feedback list"></div>
+
+      <div class="ctaRow">
+        <button class="btn primary" id="playAgainBtn" type="button">Try again</button>
+        <button class="btn" id="workshopBtn" type="button">Gym</button>
+        <button class="btn ghost" id="homeBtn" type="button">Back to Home</button>
+      </div>
+      <p class="hint" id="resultsHint">If you got 3+ wrong, the Gym is required before that level unlocks.</p>
+</section>
+  <!-- WORKSHOP -->
+<section class="card hidden workshopCard" id="screenWorkshop" aria-label="Gym practice">
+  <div class="cardHead">
+    <h2>Gym</h2>
+    <p class="muted" id="wsSubtitle">Fix your top error cog, then unlock the exit.</p>
+  </div>
+
+  <div class="wsPanels">
+    <div class="wsPanel">
+      <div class="wsPanelTitle">Top error cogs</div>
+      <div class="wsCogs" id="wsCogs"></div>
+    </div>
+
+    <div class="wsPanel">
+      <div class="wsPanelTitle">Gate</div>
+      <div class="wsGate">
+        <div class="wsGateLine"><span class="wsGateK">Type</span><span class="wsGateV" id="wsGateType">—</span></div>
+        <div class="wsGateLine"><span class="wsGateK">Target</span><span class="wsGateV" id="wsGateTarget">—</span></div>
+      </div>
+      <div class="wsMeter" aria-label="Gate progress">
+        <div class="wsMeterFill" id="wsMeterFill"></div>
+      </div>
+      <div class="wsMeterText" id="wsMeterText">0%</div>
+    </div>
+  </div>
+
+  <div class="hr"></div>
+
+  <div class="wsDrill">
+    <div class="wsPrompt" id="wsPrompt">—</div>
+
+    <div class="wsChoices hidden" id="wsChoices" aria-label="Choices"></div>
+
+    <div class="wsInputRow" id="wsInputRow">
+      <input class="input wsInput" id="wsInput" autocomplete="off" spellcheck="false" placeholder="Type your fix here…" />
+      <button class="btn primary" id="wsSubmit" type="button">Submit</button>
+    </div>
+
+    <div class="wsHelp" id="wsHelp"></div>
+    <div class="wsFeedback" id="wsFeedback" role="status" aria-live="polite"></div>
+  </div>
+
+  <div class="ctaRow">
+    <button class="btn" id="wsBackResults" type="button">Back to results</button>
+    <button class="btn primary" id="wsExit" type="button">Exit workshop 🔒</button>
+    <button class="btn ghost" id="wsHome" type="button">Back to menu</button>
+  </div>
+
+  <div class="wsTeacher hidden" id="wsTeacher">
+    <button class="btn tiny" id="wsOverride" type="button">Teacher override (unlock exit)</button>
+  </div>
+</section>
+
+<footer class="footer">© 2026 Synge Street Games — Made with Imagination and Perseverance.  •  Build KO-v4.</footer>
+  </main>
+
+  <!-- COACH MODAL (tap to continue) -->
+  <div class="modal hidden" id="coachModal" role="dialog" aria-modal="true" aria-label="Coach">
+    <div class="modalCard">
+      <div class="modalHead">
+        <div class="coachAvatar" id="coachAvatar"><img src="./coach.svg" alt="El Mister" /></div>
+        <div class="modalTitles">
+          <div class="modalTitle" id="coachTitle">Coach</div>
+          <div class="modalSub" id="coachSub">—</div>
+        </div>
+      </div>
+      <div class="modalBody" id="coachBody"></div>
+      <div class="modalBtns">
+        <button class="btn primary" id="coachPrimary" type="button">Continue</button>
+        <button class="btn ghost" id="coachSecondary" type="button">—</button>
+      </div>
+      <div class="modalHint">Tap outside to close (when allowed).</div>
+    </div>
+  </div>
+
+  <!-- REWARD POP -->
+  <div class="modal hidden" id="rewardPop" role="dialog" aria-modal="true" aria-label="Prize">
+    <div class="modalCard">
+      <div class="modalHead">
+        <div class="coachAvatar">🏆</div>
+        <div class="modalTitles">
+          <div class="modalTitle" id="rewardTitle">Prize</div>
+          <div class="modalSub">Nice work — keep the streak alive.</div>
+        </div>
+      </div>
+      <div class="modalBody" id="rewardBody"></div>
+      <div class="modalBtns">
+        <button class="btn primary" id="rewardOk" type="button">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+
+<script src="./ai.js?v=16"></script>
+  <script src="./script.js?v=16"></script>
+</body>
+</html>
