@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs>
+    <filter id="s" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#000" flood-opacity="0.35"/>
+    </filter>
+    <clipPath id="clip">
+      <circle cx="128" cy="128" r="112"/>
+    </clipPath>
+  </defs>
+
+  <!-- Atlético-ish badge (original) -->
+  <circle cx="128" cy="128" r="112" fill="#002D62" filter="url(#s)"/>
+  <g clip-path="url(#clip)">
+    <rect x="16" y="16" width="224" height="224" fill="#ffffff"/>
+    <rect x="16"  y="16" width="26" height="224" fill="#C8102E"/>
+    <rect x="68"  y="16" width="26" height="224" fill="#C8102E"/>
+    <rect x="120" y="16" width="26" height="224" fill="#C8102E"/>
+    <rect x="172" y="16" width="26" height="224" fill="#C8102E"/>
+    <circle cx="128" cy="128" r="98" fill="#071a33" opacity="0.90"/>
+  </g>
+
+  <!-- shoulders / blazer -->
+  <path d="M52 210c10-42 40-64 76-64s66 22 76 64" fill="#141414"/>
+  <path d="M88 210c6-24 20-38 40-38s34 14 40 38" fill="#232323"/>
+  <path d="M120 168l8 10 8-10 18 42H102z" fill="#C8102E"/>
+  <path d="M128 178l10 12-10 38-10-38z" fill="#ffffff"/>
+
+  <!-- head -->
+  <circle cx="128" cy="110" r="44" fill="#f4c7a1"/>
+  <!-- hair -->
+  <path d="M86 112c6-30 30-50 60-50 30 0 54 20 60 50-10-12-22-20-34-22-10 14-26 22-44 22s-34-8-42-22c-10 2-20 10-30 22z" fill="#151515"/>
+  <!-- brows -->
+  <path d="M96 108c10-8 18-10 28-6" stroke="#111" stroke-width="6" stroke-linecap="round"/>
+  <path d="M160 108c-10-8-18-10-28-6" stroke="#111" stroke-width="6" stroke-linecap="round"/>
+  <!-- eyes -->
+  <circle cx="112" cy="122" r="6" fill="#111"/>
+  <circle cx="144" cy="122" r="6" fill="#111"/>
+  <!-- mouth -->
+  <path d="M112 140c10 10 22 10 32 0" stroke="#7b2f22" stroke-width="6" stroke-linecap="round"/>
+
+  <!-- clipboard -->
+  <rect x="176" y="138" width="40" height="56" rx="10" fill="#f3f4f6" opacity="0.95"/>
+  <rect x="184" y="146" width="24" height="6" rx="3" fill="#111" opacity="0.6"/>
+  <rect x="184" y="160" width="28" height="6" rx="3" fill="#111" opacity="0.45"/>
+  <rect x="184" y="174" width="20" height="6" rx="3" fill="#111" opacity="0.35"/>
+
+  <!-- label -->
+  <rect x="54" y="30" width="148" height="28" rx="14" fill="#002D62" opacity="0.92"/>
+  <text x="128" y="50" text-anchor="middle" font-family="system-ui,Segoe UI,Arial" font-size="14" fill="#fff">EL MISTER</text>
+</svg>
